@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 7 Guide for Reviewers | rOpenSci Packages: Development, Maintenance, and Peer Review</title>
+  <meta name="description" content="Extended version of the rOpenSci packaging guide.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 7 Guide for Reviewers | rOpenSci Packages: Development, Maintenance, and Peer Review" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://ropensci.github.io/dev_guide/" />
+  <meta property="og:image" content="http://ropensci.github.io/dev_guide/images/icon_short_color.png" />
+  <meta property="og:description" content="Extended version of the rOpenSci packaging guide." />
+  <meta name="github-repo" content="ropenscilabs/dev_guide" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Guide for Reviewers | rOpenSci Packages: Development, Maintenance, and Peer Review" />
+  
+  <meta name="twitter:description" content="Extended version of the rOpenSci packaging guide." />
+  <meta name="twitter:image" content="http://ropensci.github.io/dev_guide/images/icon_short_color.png" />
+
+<meta name="author" content="rOpenSci software review editorial team: Brooke Anderson, Scott Chamberlain, Anna Krystalli, Lincoln Mullen, Karthik Ram, Noam Ross, Maëlle Salmon, Melina Vidoni">
+
+
+<meta name="date" content="2019-01-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="guide-for-authors.html">
+<link rel="next" href="editorguide.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">rOpenSci Packages: Development, Maintenance, and Peer Review</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Building Your Package</b></span></li>
+<li class="chapter" data-level="1" data-path="building.html"><a href="building.html"><i class="fa fa-check"></i><b>1</b> Packaging Guide</a><ul>
+<li class="chapter" data-level="1.1" data-path="building.html"><a href="building.html#package-name-and-metadata"><i class="fa fa-check"></i><b>1.1</b> Package name and metadata</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="building.html"><a href="building.html#naming-your-package"><i class="fa fa-check"></i><b>1.1.1</b> Naming your package</a></li>
+<li class="chapter" data-level="1.1.2" data-path="building.html"><a href="building.html#creating-metadata-for-your-package"><i class="fa fa-check"></i><b>1.1.2</b> Creating metadata for your package</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="building.html"><a href="building.html#platforms"><i class="fa fa-check"></i><b>1.2</b> Platforms</a></li>
+<li class="chapter" data-level="1.3" data-path="building.html"><a href="building.html#package-api"><i class="fa fa-check"></i><b>1.3</b> Package API</a></li>
+<li class="chapter" data-level="1.4" data-path="building.html"><a href="building.html#function-and-argument-naming"><i class="fa fa-check"></i><b>1.4</b> Function and argument naming</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="building.html"><a href="building.html#console-messages"><i class="fa fa-check"></i><b>1.4.1</b> Console messages</a></li>
+<li class="chapter" data-level="1.4.2" data-path="building.html"><a href="building.html#interactivegraphical-interfaces"><i class="fa fa-check"></i><b>1.4.2</b> Interactive/Graphical Interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="building.html"><a href="building.html#code-style"><i class="fa fa-check"></i><b>1.5</b> Code Style</a></li>
+<li class="chapter" data-level="1.6" data-path="building.html"><a href="building.html#readme"><i class="fa fa-check"></i><b>1.6</b> README</a></li>
+<li class="chapter" data-level="1.7" data-path="building.html"><a href="building.html#documentation"><i class="fa fa-check"></i><b>1.7</b> Documentation</a></li>
+<li class="chapter" data-level="1.8" data-path="building.html"><a href="building.html#website"><i class="fa fa-check"></i><b>1.8</b> Documentation website</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="building.html"><a href="building.html#function-grouping"><i class="fa fa-check"></i><b>1.8.1</b> Grouping functions in the reference</a></li>
+<li class="chapter" data-level="1.8.2" data-path="building.html"><a href="building.html#automatic-deployment-of-the-documentation-website"><i class="fa fa-check"></i><b>1.8.2</b> Automatic deployment of the documentation website</a></li>
+<li class="chapter" data-level="1.8.3" data-path="building.html"><a href="building.html#branding-of-authors"><i class="fa fa-check"></i><b>1.8.3</b> Branding of authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="building.html"><a href="building.html#authorship"><i class="fa fa-check"></i><b>1.9</b> Authorship</a></li>
+<li class="chapter" data-level="1.10" data-path="building.html"><a href="building.html#testing"><i class="fa fa-check"></i><b>1.10</b> Testing</a></li>
+<li class="chapter" data-level="1.11" data-path="building.html"><a href="building.html#examples"><i class="fa fa-check"></i><b>1.11</b> Examples</a></li>
+<li class="chapter" data-level="1.12" data-path="building.html"><a href="building.html#package-dependencies"><i class="fa fa-check"></i><b>1.12</b> Package dependencies</a></li>
+<li class="chapter" data-level="1.13" data-path="building.html"><a href="building.html#recommended-scaffolding"><i class="fa fa-check"></i><b>1.13</b> Recommended scaffolding</a></li>
+<li class="chapter" data-level="1.14" data-path="building.html"><a href="building.html#crangotchas"><i class="fa fa-check"></i><b>1.14</b> Miscellaneous CRAN gotchas</a></li>
+<li class="chapter" data-level="1.15" data-path="building.html"><a href="building.html#further-guidance"><i class="fa fa-check"></i><b>1.15</b> Further guidance</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ci.html"><a href="ci.html"><i class="fa fa-check"></i><b>2</b> Continuous Integration Best Practices</a><ul>
+<li class="chapter" data-level="2.1" data-path="ci.html"><a href="ci.html#why-use-continuous-integration-ci"><i class="fa fa-check"></i><b>2.1</b> Why use continuous integration (CI)?</a></li>
+<li class="chapter" data-level="2.2" data-path="ci.html"><a href="ci.html#how-to-use-continuous-integration"><i class="fa fa-check"></i><b>2.2</b> How to use continuous integration?</a></li>
+<li class="chapter" data-level="2.3" data-path="ci.html"><a href="ci.html#whichci"><i class="fa fa-check"></i><b>2.3</b> Which continuous integration service(s)?</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="ci.html"><a href="ci.html#travis-ci-linux-and-mac-osx"><i class="fa fa-check"></i><b>2.3.1</b> Travis CI (Linux and Mac OSX)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="ci.html"><a href="ci.html#appveyor-ci-windows"><i class="fa fa-check"></i><b>2.3.2</b> AppVeyor CI (Windows)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="ci.html"><a href="ci.html#circle-ci"><i class="fa fa-check"></i><b>2.3.3</b> Circle CI</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="ci.html"><a href="ci.html#coverage"><i class="fa fa-check"></i><b>2.4</b> Test coverage</a></li>
+<li class="chapter" data-level="2.5" data-path="ci.html"><a href="ci.html#even-more-ci-opencpu"><i class="fa fa-check"></i><b>2.5</b> Even more CI: OpenCPU</a></li>
+<li class="chapter" data-level="2.6" data-path="ci.html"><a href="ci.html#make-more-of-your-ci-builds-tic"><i class="fa fa-check"></i><b>2.6</b> Make more of your CI builds: tic</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="package-development-security-best-practices.html"><a href="package-development-security-best-practices.html"><i class="fa fa-check"></i><b>3</b> Package Development Security Best Practices</a><ul>
+<li class="chapter" data-level="3.1" data-path="package-development-security-best-practices.html"><a href="package-development-security-best-practices.html#misc"><i class="fa fa-check"></i><b>3.1</b> Misc</a></li>
+</ul></li>
+<li class="part"><span><b>II Software Peer Review of Packages</b></span></li>
+<li class="chapter" data-level="4" data-path="softwarereviewintro.html"><a href="softwarereviewintro.html"><i class="fa fa-check"></i><b>4</b> Software Peer Review, Why? What?</a><ul>
+<li class="chapter" data-level="4.1" data-path="softwarereviewintro.html"><a href="softwarereviewintro.html#whatissoftwarereview"><i class="fa fa-check"></i><b>4.1</b> What is rOpenSci Software Peer Review?</a></li>
+<li class="chapter" data-level="4.2" data-path="softwarereviewintro.html"><a href="softwarereviewintro.html#whysubmit"><i class="fa fa-check"></i><b>4.2</b> Why submit your package to rOpenSci?</a></li>
+<li class="chapter" data-level="4.3" data-path="softwarereviewintro.html"><a href="softwarereviewintro.html#whyreview"><i class="fa fa-check"></i><b>4.3</b> Why review packages for rOpenSci?</a></li>
+<li class="chapter" data-level="4.4" data-path="softwarereviewintro.html"><a href="softwarereviewintro.html#whyopen"><i class="fa fa-check"></i><b>4.4</b> Why are reviews open?</a></li>
+<li class="chapter" data-level="4.5" data-path="softwarereviewintro.html"><a href="softwarereviewintro.html#editors-and-reviewers"><i class="fa fa-check"></i><b>4.5</b> Editors and reviewers</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="softwarereviewintro.html"><a href="softwarereviewintro.html#associateditors"><i class="fa fa-check"></i><b>4.5.1</b> Associate editors</a></li>
+<li class="chapter" data-level="4.5.2" data-path="softwarereviewintro.html"><a href="softwarereviewintro.html#reviewers"><i class="fa fa-check"></i><b>4.5.2</b> Reviewers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="policies.html"><a href="policies.html"><i class="fa fa-check"></i><b>5</b> Software Peer Review policies</a><ul>
+<li class="chapter" data-level="5.1" data-path="policies.html"><a href="policies.html#review-process"><i class="fa fa-check"></i><b>5.1</b> Review process</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="policies.html"><a href="policies.html#publishing-in-other-venues"><i class="fa fa-check"></i><b>5.1.1</b> Publishing in other Venues</a></li>
+<li class="chapter" data-level="5.1.2" data-path="policies.html"><a href="policies.html#coi"><i class="fa fa-check"></i><b>5.1.2</b> Conflict of interest for reviewers/editors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="policies.html"><a href="policies.html#aims-and-scope"><i class="fa fa-check"></i><b>5.2</b> Aims and Scope</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="policies.html"><a href="policies.html#package-categories"><i class="fa fa-check"></i><b>5.2.1</b> Package categories</a></li>
+<li class="chapter" data-level="5.2.2" data-path="policies.html"><a href="policies.html#other-scope-considerations"><i class="fa fa-check"></i><b>5.2.2</b> Other scope considerations</a></li>
+<li class="chapter" data-level="5.2.3" data-path="policies.html"><a href="policies.html#overlap"><i class="fa fa-check"></i><b>5.2.3</b> Package overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="policies.html"><a href="policies.html#ownership-after-softwarereview"><i class="fa fa-check"></i><b>5.3</b> Package ownership and maintenance</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="policies.html"><a href="policies.html#role-of-the-ropensci-team"><i class="fa fa-check"></i><b>5.3.1</b> Role of the rOpenSci team</a></li>
+<li class="chapter" data-level="5.3.2" data-path="policies.html"><a href="policies.html#maintainer-responsiveness"><i class="fa fa-check"></i><b>5.3.2</b> Maintainer responsiveness</a></li>
+<li class="chapter" data-level="5.3.3" data-path="policies.html"><a href="policies.html#quality-commitment"><i class="fa fa-check"></i><b>5.3.3</b> Quality commitment</a></li>
+<li class="chapter" data-level="5.3.4" data-path="policies.html"><a href="policies.html#package-removal"><i class="fa fa-check"></i><b>5.3.4</b> Package removal</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="policies.html"><a href="policies.html#code-of-conduct"><i class="fa fa-check"></i><b>5.4</b> Code of Conduct</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="guide-for-authors.html"><a href="guide-for-authors.html"><i class="fa fa-check"></i><b>6</b> Guide for Authors</a></li>
+<li class="chapter" data-level="7" data-path="reviewerguide.html"><a href="reviewerguide.html"><i class="fa fa-check"></i><b>7</b> Guide for Reviewers</a><ul>
+<li class="chapter" data-level="7.1" data-path="reviewerguide.html"><a href="reviewerguide.html#preparing-your-review"><i class="fa fa-check"></i><b>7.1</b> Preparing your review</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="reviewerguide.html"><a href="reviewerguide.html#general-guidelines"><i class="fa fa-check"></i><b>7.1.1</b> General guidelines</a></li>
+<li class="chapter" data-level="7.1.2" data-path="reviewerguide.html"><a href="reviewerguide.html#experience-from-past-reviewers"><i class="fa fa-check"></i><b>7.1.2</b> Experience from past reviewers</a></li>
+<li class="chapter" data-level="7.1.3" data-path="reviewerguide.html"><a href="reviewerguide.html#helper-package-for-reviewers"><i class="fa fa-check"></i><b>7.1.3</b> Helper package for reviewers</a></li>
+<li class="chapter" data-level="7.1.4" data-path="reviewerguide.html"><a href="reviewerguide.html#feedback-on-the-process"><i class="fa fa-check"></i><b>7.1.4</b> Feedback on the process</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="reviewerguide.html"><a href="reviewerguide.html#submitreview"><i class="fa fa-check"></i><b>7.2</b> Submitting the Review</a></li>
+<li class="chapter" data-level="7.3" data-path="reviewerguide.html"><a href="reviewerguide.html#followupreviewer"><i class="fa fa-check"></i><b>7.3</b> Review follow-up</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="editorguide.html"><a href="editorguide.html"><i class="fa fa-check"></i><b>8</b> Guide for Editors</a><ul>
+<li class="chapter" data-level="8.1" data-path="editorguide.html"><a href="editorguide.html#eicchecklist"><i class="fa fa-check"></i><b>8.1</b> EiC Responsibilities</a></li>
+<li class="chapter" data-level="8.2" data-path="editorguide.html"><a href="editorguide.html#editorchecklist"><i class="fa fa-check"></i><b>8.2</b> Handling Editor’s Checklist</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="editorguide.html"><a href="editorguide.html#upon-submission"><i class="fa fa-check"></i><b>8.2.1</b> Upon submission:</a></li>
+<li class="chapter" data-level="8.2.2" data-path="editorguide.html"><a href="editorguide.html#look-for-and-assign-reviewers"><i class="fa fa-check"></i><b>8.2.2</b> Look for and assign reviewers:</a></li>
+<li class="chapter" data-level="8.2.3" data-path="editorguide.html"><a href="editorguide.html#during-review"><i class="fa fa-check"></i><b>8.2.3</b> During review:</a></li>
+<li class="chapter" data-level="8.2.4" data-path="editorguide.html"><a href="editorguide.html#after-review"><i class="fa fa-check"></i><b>8.2.4</b> After review:</a></li>
+<li class="chapter" data-level="8.2.5" data-path="editorguide.html"><a href="editorguide.html#for-joint-joss-submissions"><i class="fa fa-check"></i><b>8.2.5</b> For joint JOSS submissions:</a></li>
+<li class="chapter" data-level="8.2.6" data-path="editorguide.html"><a href="editorguide.html#package-promotion"><i class="fa fa-check"></i><b>8.2.6</b> Package promotion:</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="editorguide.html"><a href="editorguide.html#outofscoperesponse"><i class="fa fa-check"></i><b>8.3</b> Responding to out-of-scope submissions</a></li>
+</ul></li>
+<li class="part"><span><b>III Maintaining Packages</b></span></li>
+<li class="chapter" data-level="9" data-path="collaboration.html"><a href="collaboration.html"><i class="fa fa-check"></i><b>9</b> Collaboration Guide</a><ul>
+<li class="chapter" data-level="9.1" data-path="collaboration.html"><a href="collaboration.html#friendlyfiles"><i class="fa fa-check"></i><b>9.1</b> Make your repo contribution and collaboration friendly</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="collaboration.html"><a href="collaboration.html#code-of-conduct-1"><i class="fa fa-check"></i><b>9.1.1</b> Code of conduct</a></li>
+<li class="chapter" data-level="9.1.2" data-path="collaboration.html"><a href="collaboration.html#contributing-guide"><i class="fa fa-check"></i><b>9.1.2</b> Contributing guide</a></li>
+<li class="chapter" data-level="9.1.3" data-path="collaboration.html"><a href="collaboration.html#issue-labelling"><i class="fa fa-check"></i><b>9.1.3</b> Issue labelling</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="collaboration.html"><a href="collaboration.html#workingcollaborators"><i class="fa fa-check"></i><b>9.2</b> Working with collaborators</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="collaboration.html"><a href="collaboration.html#onboarding-collaborators"><i class="fa fa-check"></i><b>9.2.1</b> Onboarding collaborators</a></li>
+<li class="chapter" data-level="9.2.2" data-path="collaboration.html"><a href="collaboration.html#working-with-collaborators-including-yourself"><i class="fa fa-check"></i><b>9.2.2</b> Working with collaborators (including yourself)</a></li>
+<li class="chapter" data-level="9.2.3" data-path="collaboration.html"><a href="collaboration.html#attributions"><i class="fa fa-check"></i><b>9.2.3</b> Be generous with attributions</a></li>
+<li class="chapter" data-level="9.2.4" data-path="collaboration.html"><a href="collaboration.html#welcoming-collaborators-to-ropensci"><i class="fa fa-check"></i><b>9.2.4</b> Welcoming collaborators to rOpenSci</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="releasing.html"><a href="releasing.html"><i class="fa fa-check"></i><b>10</b> Releasing a package</a><ul>
+<li class="chapter" data-level="10.1" data-path="releasing.html"><a href="releasing.html#versioning"><i class="fa fa-check"></i><b>10.1</b> Versioning</a></li>
+<li class="chapter" data-level="10.2" data-path="releasing.html"><a href="releasing.html#releasing-1"><i class="fa fa-check"></i><b>10.2</b> Releasing</a></li>
+<li class="chapter" data-level="10.3" data-path="releasing.html"><a href="releasing.html#news"><i class="fa fa-check"></i><b>10.3</b> News file</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="marketing.html"><a href="marketing.html"><i class="fa fa-check"></i><b>11</b> Marketing your package</a></li>
+<li class="chapter" data-level="12" data-path="grooming.html"><a href="grooming.html"><i class="fa fa-check"></i><b>12</b> GitHub Grooming</a><ul>
+<li class="chapter" data-level="12.1" data-path="grooming.html"><a href="grooming.html#repodiscoverability"><i class="fa fa-check"></i><b>12.1</b> Make your repository more discoverable</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="grooming.html"><a href="grooming.html#github-repo-topics"><i class="fa fa-check"></i><b>12.1.1</b> GitHub repo topics</a></li>
+<li class="chapter" data-level="12.1.2" data-path="grooming.html"><a href="grooming.html#github-linguist"><i class="fa fa-check"></i><b>12.1.2</b> GitHub linguist</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="grooming.html"><a href="grooming.html#marketown"><i class="fa fa-check"></i><b>12.2</b> Market your own account</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="evolution.html"><a href="evolution.html"><i class="fa fa-check"></i><b>13</b> Package evolution - changing stuff in your package</a><ul>
+<li class="chapter" data-level="13.1" data-path="evolution.html"><a href="evolution.html#philosophy-of-changes"><i class="fa fa-check"></i><b>13.1</b> Philosophy of changes</a></li>
+<li class="chapter" data-level="13.2" data-path="evolution.html"><a href="evolution.html#parameters-changing-parameter-names"><i class="fa fa-check"></i><b>13.2</b> Parameters: changing parameter names</a></li>
+<li class="chapter" data-level="13.3" data-path="evolution.html"><a href="evolution.html#functions-changing-function-names"><i class="fa fa-check"></i><b>13.3</b> Functions: changing function names</a></li>
+<li class="chapter" data-level="13.4" data-path="evolution.html"><a href="evolution.html#functions-deprecate-defunct"><i class="fa fa-check"></i><b>13.4</b> Functions: deprecate &amp; defunct</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="contributingguide.html"><a href="contributingguide.html"><i class="fa fa-check"></i><b>14</b> Contributing Guide</a><ul>
+<li class="chapter" data-level="14.1" data-path="contributingguide.html"><a href="contributingguide.html#why-contributing-to-ropensci-packages"><i class="fa fa-check"></i><b>14.1</b> Why contributing to rOpenSci packages?</a></li>
+<li class="chapter" data-level="14.2" data-path="contributingguide.html"><a href="contributingguide.html#non-code-contributions"><i class="fa fa-check"></i><b>14.2</b> Non code contributions</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="contributingguide.html"><a href="contributingguide.html#reporting-use-cases"><i class="fa fa-check"></i><b>14.2.1</b> Reporting use cases</a></li>
+<li class="chapter" data-level="14.2.2" data-path="contributingguide.html"><a href="contributingguide.html#reporting-issues-or-requesting-features"><i class="fa fa-check"></i><b>14.2.2</b> Reporting issues or Requesting features</a></li>
+<li class="chapter" data-level="14.2.3" data-path="contributingguide.html"><a href="contributingguide.html#asking-other-questions"><i class="fa fa-check"></i><b>14.2.3</b> Asking other questions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="contributingguide.html"><a href="contributingguide.html#code-contributions"><i class="fa fa-check"></i><b>14.3</b> Code contributions</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="contributingguide.html"><a href="contributingguide.html#prerequisites-for-package-development"><i class="fa fa-check"></i><b>14.3.1</b> Prerequisites for package development</a></li>
+<li class="chapter" data-level="14.3.2" data-path="contributingguide.html"><a href="contributingguide.html#finding-where-to-contribute-code-or-documentation"><i class="fa fa-check"></i><b>14.3.2</b> Finding where to contribute code or documentation</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="booknews.html"><a href="booknews.html"><i class="fa fa-check"></i><b>A</b> NEWS</a><ul>
+<li class="chapter" data-level="A.1" data-path="booknews.html"><a href="booknews.html#place-holder-0.0.1"><i class="fa fa-check"></i><b>A.1</b> place-holder 0.0.1</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="reviewtemplate.html"><a href="reviewtemplate.html"><i class="fa fa-check"></i><b>B</b> Review template</a></li>
+<li class="chapter" data-level="C" data-path="editortemplate.html"><a href="editortemplate.html"><i class="fa fa-check"></i><b>C</b> Editor’s template</a></li>
+<li class="chapter" data-level="D" data-path="reviewrequesttemplate.html"><a href="reviewrequesttemplate.html"><i class="fa fa-check"></i><b>D</b> Review request template</a></li>
+<li class="chapter" data-level="E" data-path="approvaltemplate.html"><a href="approvaltemplate.html"><i class="fa fa-check"></i><b>E</b> Approval comment template</a></li>
+<li class="chapter" data-level="F" data-path="newstemplate.html"><a href="newstemplate.html"><i class="fa fa-check"></i><b>F</b> NEWS template</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">rOpenSci Packages: Development, Maintenance, and Peer Review</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reviewerguide" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Guide for Reviewers</h1>
+<div class="summaryblock">
+<p>
+Thanks for accepting to review a package for rOpenSci! This chapter consists of our guidelines to <a href="#preparereview">prepare</a>, <a href="reviewerguide.html#submitreview">submit</a> and <a href="reviewerguide.html#followupreviewer">follow up</a> on your review.
+</p>
+<p>
+You might contact the editor in charge of the submission for any question you might have about the process or your review.
+</p>
+<p>
+Please strive to complete your review within 3 weeks of accepting a review request. We will aim to remind reviewers of upcoming and past due dates. Editors may assign additional or alternate reviewers if a review is excessively late.
+</p>
+</div>
+<div id="preparing-your-review" class="section level2">
+<h2><span class="header-section-number">7.1</span> Preparing your review</h2>
+<p>Note that when installing the package to review it, you should use the <code>dependencies = TRUE</code> argument of <code>devtools::install()</code> to make sure you have all dependencies available.</p>
+<div id="general-guidelines" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> General guidelines</h3>
+<p>To review a package, please begin by copying our <a href="reviewtemplate.html#reviewtemplate">review template</a> and using it as a high-level checklist. In addition to checking off the minimum criteria, we ask that you provide general comments addressing the following:</p>
+<ul>
+<li>Does the code comply with general principles in the <a href="https://mozillascience.github.io/codeReview/review.html">Mozilla reviewing guide</a>?</li>
+<li>Does the package comply with the <a href="building.html#building">rOpenSci packaging guide</a>?</li>
+<li>Are there improvements that could be made to the code style?</li>
+<li>Is there code duplication in the package that should be reduced?</li>
+<li>Are there user interface improvements that could be made?</li>
+<li>Are there performance improvements that could be made?</li>
+<li>Is the documentation (installation instructions/vignettes/examples/demos) clear and sufficient? Does it use the principle of <em>multiple points of entry</em> i.e. takes into account the fact that any piece of documentation may be the first encounter the user has with the package and/or the tool/data it wraps?</li>
+<li>Were functions and arguments named to work together to form a common, logical programming API that is easy to read, and autocomplete?</li>
+<li>If you have your own relevant data/problem, work through it with the package. You may find rough edges and use-cases the author didn’t think about.</li>
+</ul>
+<p>Please be respectful and kind to the authors in your reviews. Our <a href="policies.html#code-of-conduct">code of conduct</a> is mandatory for everyone involved in our review process. We expect you to submit your review withing 3 weeks, depending on the deadline set by the editor. Please contact the editor directly or in the submission thread to inform them about possible delays.</p>
+<p>We encourage you to use automated tools to facilitate your reviewing. These include:</p>
+<ul>
+<li>Checking the package’s logs on its continuous integration services (Travis-CI, Codecov, etc.)</li>
+<li>Running <code>devtools::check()</code> and <code>devtools::test()</code> on the package to find any errors that may be missed on the author’s system.</li>
+<li>Using the <strong>covr</strong> package to examine the extent of test coverage.</li>
+<li>Using the <a href="https://github.com/MangoTheCat/goodpractice"><strong>goodpractice</strong></a> package (<code>goodpractice::gp()</code>) to identify likely sources of errors and style issues. Most exceptions will need to be justified by the author in the particular context of their package.</li>
+<li>Using <code>spelling::spell_check_package()</code> (and <code>spelling::spell_check_files(&quot;README.Rmd&quot;)</code>) to find spelling errors.</li>
+</ul>
+</div>
+<div id="experience-from-past-reviewers" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Experience from past reviewers</h3>
+<p>First-time reviewers may find it helpful to read (about) some previous reviews. In general you can find submission threads of onboarded packages <a href="https://github.com/ropensci/software-review/issues?q=is%3Aissue+is%3Aclosed+label%3A6%2Fapproved">here</a>. Here are a few chosen examples of reviews (note that your reviews do not need to be as long as these examples):</p>
+<ul>
+<li><p><code>rtika</code> <a href="https://github.com/ropensci/software-review/issues/191#issuecomment-367166658">review 1</a> and <a href="https://github.com/ropensci/software-review/issues/191#issuecomment-368254623">review 2</a></p></li>
+<li><p><code>NLMR</code> <a href="https://github.com/ropensci/software-review/issues/188#issuecomment-368042693">review 1</a> and <a href="https://github.com/ropensci/software-review/issues/188#issuecomment-369310831">review 2</a></p></li>
+<li><p><code>bowerbird</code> <a href="https://github.com/ropensci/software-review/issues/139#issuecomment-322713737">pre-review comment</a>, <a href="https://github.com/ropensci/software-review/issues/139#issuecomment-342380870">review 1</a>, <a href="https://github.com/ropensci/software-review/issues/139#issuecomment-342724843">review 2</a>.</p></li>
+<li><p><code>rusda</code> <a href="https://github.com/ropensci/software-review/issues/18#issuecomment-120445737">review</a> (from before we had a review template)</p></li>
+</ul>
+<p>You can read blog posts written by reviewers about their experiences <a href="https://ropensci.org/tags/reviewer/">via this link</a>. In particular, in <a href="https://ropensci.org/blog/2017/08/22/first-package-review/">this blog post by Mara Averick</a> read about the “naive user” role a reviewer can take to provide useful feedback even without being experts of the package’s topic or implementation, by asking themselves <em>“What did I think this thing would do? Does it do it? What are things that scare me off?”</em>. In <a href="https://ropensci.org/blog/2017/09/08/first-review-experiences/">another blog post</a> Verena Haunschmid explains how she alternated between using the package and checking its code.</p>
+<p>As both a former reviewer and package author <a href="https://adamhsparks.github.io/">Adam Sparks</a> <a href="https://twitter.com/adamhsparks/status/898132036451303425">wrote this</a> “[write] a good critique of the package structure and best coding practices. If you know how to do something better, tell me. It’s easy to miss documentation opportunities as a developer, as a reviewer, you have a different view. You’re a user that can give feedback. What’s not clear in the package? How can it be made more clear? If you’re using it for the first time, is it easy? Do you know another R package that maybe I should be using? Or is there one I’m using that perhaps I shouldn’t be? If you can contribute to the package, offer.”</p>
+</div>
+<div id="helper-package-for-reviewers" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> Helper package for reviewers</h3>
+<p>You can streamline your review workflow by using the <a href="https://github.com/ropenscilabs/pkgreviewr"><code>pkgreviewr</code> package</a> created by associated editor Anna Krystalli. Say you accepted to review the <code>refnet</code> package, you’d write</p>
+<pre class="sourceCode r"><code class="sourceCode r">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ropenscilabs/pkgreviewr&quot;</span>)
+<span class="kw">library</span>(pkgreviewr)
+<span class="kw">pkgreview_create</span>(<span class="dt">pkg_repo =</span> <span class="st">&quot;embruna/refnet&quot;</span>, 
+                 <span class="dt">review_parent =</span> <span class="st">&quot;~/Documents/workflows/rOpenSci/reviews/&quot;</span>)</code></pre>
+<p>and</p>
+<ul>
+<li>the GitHub repo of the <code>refnet</code> package will be cloned.</li>
+<li>a review project will be created, containing a notebook for you to fill, and the review template.</li>
+</ul>
+</div>
+<div id="feedback-on-the-process" class="section level3">
+<h3><span class="header-section-number">7.1.4</span> Feedback on the process</h3>
+<p>We encourage you to ask questions and provide feedback on the review process on our <a href="https://discuss.ropensci.org">forum</a>.</p>
+</div>
+</div>
+<div id="submitreview" class="section level2">
+<h2><span class="header-section-number">7.2</span> Submitting the Review</h2>
+<ul>
+<li>When your review is complete, paste it as a comment into the package software-review issue.</li>
+<li>Additional comments are welcome in the same issue. We hope that package reviews will work as an ongoing conversation with the authors as opposed to a single round of reviews typical of academic manuscripts.</li>
+<li>You may also submit issues or pull requests directly to the package repo if you choose, but if you do, please comment about them and link to them in the software-review repo comment thread so we have a centralized record and text of your review.</li>
+<li>Please include an estimate of how many hours you spent on your review afterwards.</li>
+</ul>
+</div>
+<div id="followupreviewer" class="section level2">
+<h2><span class="header-section-number">7.3</span> Review follow-up</h2>
+<p>Authors should respond within 2 weeks with their changes to the package in response to your review. At this stage, we ask that you respond as to whether the changes sufficiently address any issues raised in your review. We encourage ongoing discussion between package authors and reviewers, and you may ask editors to clarify issues in the review thread as well.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="guide-for-authors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="editorguide.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ropensci/dev_guide/edit/dev/softwarereview_reviewer.Rmd",
+"text": "Edit this chapter"
+},
+"history": {
+"link": "https://github.com/ropensci/dev_guide/commits/master/softwarereview_reviewer.Rmd",
+"text": "Chapter edit history"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

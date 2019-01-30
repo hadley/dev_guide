@@ -1,0 +1,34 @@
+--- 
+title: "rOpenSci Packages: Development, Maintenance, and Peer Review"
+author: "rOpenSci software review editorial team: Brooke Anderson, Scott Chamberlain, Anna Krystalli, Lincoln Mullen, Karthik Ram, Noam Ross, Maëlle Salmon, Melina Vidoni"
+date: "2019-01-30"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: ropenscilabs/dev_guide
+url: 'http\://ropensci.github.io/dev_guide/'
+description: "Extended version of the rOpenSci packaging guide."
+cover-image: images/icon_short_color.png
+---
+
+# Preface {-}
+
+Welcome! This book is a guide for authors, maintainers, reviewers and editors of rOpenSci.
+
+The [first section of the book](#building) contains our guidelines for creating and testing R packages. 
+
+The [second section](#softwarereviewintro) is dedicated to rOpenSci's software peer review process: what it is, our policies, and specific guides for authors, editors and reviewers throughout the process.
+
+The [third and last section](#collaboration) features our best practice for nurturing your package once it has been onboarded: how to collaborate with other developers, how to document releases, how to promote your package and how to leverage GitHub as a development platform. The third section also features a [chapter for anyone wishing to start contributing to rOpenSci packages](#contributingguide).
+
+We hope that you'll find the guide useful and clear, and welcome your suggestions in the [issue tracker of the book](https://github.com/ropenscilabs/dev_guide/issues). Happy R packaging!
+
+The rOpenSci editorial team.
+
+This book is a living document. You can view updates to our best practices and policies via the [release notes](#booknews).  
+
+_If you want to contribute to this book (suggestions, corrections) please refer to [the GitHub repository](https://github.com/ropensci/dev_guide) in particular [the contributing guidelines](https://github.com/ropensci/dev_guide#contributing). Thanks!_
+
+_We are thankful for all authors, reviewers and guest editors for helping us improve the system and this guide over the years. Thanks also to the following persons who made contributions to this guide and its previous incarnations: [Katrin Leinweber](https://github.com/katrinleinweber), [John Baumgartner](https://github.com/johnbaums), [François Michonneau](https://github.com/fmichonneau), [Christophe Dervieux](https://github.com/cderv), [Lorenzo Busetto](https://github.com/lbusett), [Ben Marwick](https://github.com/benmarwick), [Nicholas Horton](https://github.com/nicholasjhorton), [Chris Kennedy](https://github.com/ck37), [Mark Padgham](https://github.com/mpadge), [Jeroen Ooms](https://github.com/jeroen), [Sean Hughes](https://github.com/seaaan), [Jan Gorecki](https://github.com/jangorecki), [Joseph Stachelek](https://github.com/jsta), [Dean Attali](https://github.com/daattali), [Julia Gustavsen](https://github.com/jooolia), [Nicholas Tierney](https://github.com/njtierney), [Rich FitzJohn](https://github.com/richfitz), [Tiffany Timbers](https://github.com/ttimbers), [Hilmar Lapp](https://github.com/hlapp), [Miles McBain](https://github.com/milesmcbain), [Bryce Mecum](https://github.com/amoeba), [Jonathan Carroll](https://github.com/jonocarroll/), [Carl Boettiger](https://github.com/cboettig/), [Florian Privé](https://github.com/privefl), [Stefanie Butland](https://github.com/stefaniebutland), [Daniel Possenriede](https://github.com/dpprdan/). Please tell us if we forgot to acknowledge your contribution!_
